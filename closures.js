@@ -93,15 +93,30 @@ count(); // 4
     
     return {
       inc:(value)=> {
-        value += 1;
+        value += 1
         return value;
       },
       dec:(value)=> {
         value -= 1;
         return value;
       },
-    }
-  };
+      
+      };
+    
+  }
+
+//   function inc() {
+//     return value += 1
+//   }
+//   function dec() {
+//     return value -= 1
+//   }
+//   return {
+//     inc,
+//     dec
+//   };
+// }
+
   counterFactory(10)
 
 
@@ -163,14 +178,16 @@ var module = (function () {
   // outside our lexical scope
   return {
     // Code here.
-    publicMethod: function() {
-     return privateMethod()
 
 
-    }
-  };
+
+publicMethod: function() {
+  return privateMethod()
+}
+};
 })();
-module.publicMethod();
+
+module.publicMethod()
 
 ////////// PROBLEM 7 //////////
 
