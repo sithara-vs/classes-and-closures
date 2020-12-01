@@ -54,7 +54,8 @@ function callFriend(name) {
 //Code Here
 
 var callJake = callFriend("Jake");
-var dialJake = dial(435 - 555 - 9248);
+callJake("435-555-9248");
+
 ////////// PROBLEM 3 //////////
 
 /*
@@ -87,23 +88,23 @@ count(); // 4
   Information on the module pattern available here: 
   http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-example?answertab=votes#tab-top
 */
- function counterFactory(value) {
-  // Code here.
+function counterFactory(value) {
+  //   // Code here.
   // your module code goes here
-    
-    return {
-      inc:(value)=> {
-        value += 1
-        return value;
-      },
-      dec:(value)=> {
-        value -= 1;
-        return value;
-      },
-      
-      };
-    
-  }
+
+  return {
+    inc: function () {
+      value += 1;
+      return value;
+      //return value;
+    },
+    dec: function () {
+      value -= 1;
+      return value;
+      //return value;
+    },
+  };
+}
 
 //   function inc() {
 //     return value += 1
@@ -117,15 +118,13 @@ count(); // 4
 //   };
 // }
 
-  counterFactory(10)
+counterFactory(10);
 
-
-
-counter = counterFactory(10);
- counter.inc() // 11
- counter.inc() // 12
- counter.inc() // 13
- counter.dec() // 12
+const counter = counterFactory(10);
+counter.inc(); // 11
+counter.inc(); // 12
+counter.inc(); // 13
+counter.dec(); // 12
 
 ////////// PROBLEM 5 //////////
 
@@ -140,8 +139,8 @@ function motivation(firstname, lastname) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
-  function message(){
-    return welcomeText+" "+firstname+" " +lastname+"."
+  function message() {
+    return welcomeText + " " + firstname + " " + lastname + ".";
   }
   //Uncommment this to return the value of your message function
   return message;
@@ -179,15 +178,13 @@ var module = (function () {
   return {
     // Code here.
 
-
-
-publicMethod: function() {
-  return privateMethod()
-}
-};
+    publicMethod: function () {
+      return privateMethod();
+    },
+  };
 })();
 
-module.publicMethod()
+module.publicMethod();
 
 ////////// PROBLEM 7 //////////
 
@@ -203,14 +200,14 @@ function secretNumber() {
 
   return {
     // Code here
-    addToSecret(addnum){
+    addToSecret(addnum) {
       secret += addnum;
-      return(secret)
+      return secret;
     },
-    takeAwayFromSecret(subnum){
+    takeAwayFromSecret(subnum) {
       secret -= subnum;
-      return (secret);
-    }
+      return secret;
+    },
   };
 }
 
@@ -235,19 +232,21 @@ function secretNumber() {
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function () {
-      console.log(i);
-    }, i * 1000);
+    function inner(j) {
+      setTimeout(function () {
+        console.log(j);
+      }, j * 1000);
+    }
+    inner(i);
   }
 }
 timeOutCounter();
 // function timeOutCounter() {
 //   for (var i = 0; i <= 5; i++) {
 //        setTimeout(function () {
-        
+
 //          console.log(i);
 //        }, i * 1000);
 //      }
 //    }
 //    timeOutCounter();
-  
